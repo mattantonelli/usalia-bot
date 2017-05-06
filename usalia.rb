@@ -17,9 +17,24 @@ bot.message(start_with: /\/poll/i) do |event|
     message.react('👍')
     message.react('👎')
   else
-    emojis.each do |emoji|
-      message.react(emoji)
-    end
+    emojis.each { |emoji| message.react(emoji) }
+  end
+end
+
+bot.message_edit(start_with: /\/poll/i) do |event|
+  message = event.channel.message(event.message.id)
+  emojis = message.content.scan(EMOJI_REGEX).flatten.compact
+  bot_reactions = message.reactions.values.select(&:me)
+    .map { |reaction| [reaction.name, reaction.id].compact.join(':') }
+
+  new_emojis = emojis - bot_reactions
+  new_emojis.each do |emoji|
+    message.react(emoji)
+  end
+
+  old_emojis = bot_reactions - emojis
+  old_emojis.each do |emoji|
+    message.delete_own_reaction(emoji)
   end
 end
 
