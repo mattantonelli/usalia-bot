@@ -1,4 +1,5 @@
 require 'discordrb'
+require 'tzinfo'
 require 'yaml'
 
 module UsaliaBot
