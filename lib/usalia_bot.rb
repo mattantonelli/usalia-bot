@@ -8,6 +8,8 @@ module UsaliaBot
 
   bot = Discordrb::Commands::CommandBot.new(token: TOKEN, client_id: CLIENT_ID)
 
+  require_relative 'usalia_bot/helper_methods'
+
   Dir['lib/usalia_bot/events/*.rb'].each { |file| load file }
   Events.constants.each do |event|
     bot.include!(Events.const_get(event))
