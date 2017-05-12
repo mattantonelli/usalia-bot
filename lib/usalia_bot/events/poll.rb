@@ -11,8 +11,8 @@ module UsaliaBot
         emojis = message.content.scan(EMOJI_REGEX).flatten.compact
 
         if emojis.empty?
-          message.react('👍')
-          message.react('👎')
+          message.react('👍') # :thumbsup:
+          message.react('👎') # :thumbsdown:
         else
           emojis.each { |emoji| message.react(emoji) }
         end
@@ -24,12 +24,15 @@ module UsaliaBot
         bot_reactions = message.reactions.values.select(&:me)
           .map { |reaction| [reaction.name, reaction.id].compact.join(':') }
 
+        # Add reactions that are in the message and not in the reactions
         new_emojis = emojis - bot_reactions
         new_emojis.each do |emoji|
           message.react(emoji)
         end
 
-        old_emojis = bot_reactions - emojis
+        # Remove reactions that are no longer present in the message, except
+        # for thumbsup and thumbsdown which may have been added by default
+        old_emojis = bot_reactions - emojis - ['👍', '👎']
         old_emojis.each do |emoji|
           message.delete_own_reaction(emoji)
         end
