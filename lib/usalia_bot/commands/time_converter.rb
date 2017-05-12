@@ -1,7 +1,7 @@
 module UsaliaBot
-  module Events
+  module Commands
     module TimeConverter
-      extend Discordrb::EventContainer
+      extend Discordrb::Commands::CommandContainer
       include HelperMethods
 
       TIME_REGEX = /convert (\d{1,2}:\d{1,2}(?:\s?[ap]m)?)\s([a-z]{3,}) to ([a-z]{3,})/i
@@ -12,7 +12,8 @@ module UsaliaBot
                            aest: 'Australia/Melbourne', aedt: 'Australia/Melbourne',
                            bst: 'Europe/London' }
 
-      message(start_with: /#{MENTION} convert/i) do |event|
+      command(:convert, description: 'Convert time from one zone to another.',
+                        usage: 'convert <time> <zone> to <new_zone>') do |event|
         message = event.message
         match = message.content.match(TIME_REGEX)
 
@@ -24,21 +25,21 @@ module UsaliaBot
         time, zone, requested_zone = match.captures
 
         begin
-          zone_identifier = ZONE_CONVERSIONS[zone.downcase.to_sym] || zone
+          zone_identifier = ZONE_CONVERSIONS[zone.downcase.to_sym] || zone.upcase
           time_in_utc = TZInfo::Timezone.get(zone_identifier)
             .local_to_utc(Time.parse(time).to_i)
 
-          requested_zone_identifier = ZONE_CONVERSIONS[requested_zone.downcase.to_sym] || requested_zone
+          requested_zone_identifier = ZONE_CONVERSIONS[requested_zone.downcase.to_sym] || requested_zone.upcase
           requested_zone_info = TZInfo::Timezone.get(requested_zone_identifier)
           requested_time = Time.at(requested_zone_info.utc_to_local(time_in_utc))
           requested_zone_abbreviation = requested_zone_info.strftime('%Z')
 
           result = requested_time.strftime("%l:%M%P #{requested_zone_abbreviation}")
-          message.reply(result)
+          result
         rescue ArgumentError
-          message.reply('The time you entered is invalid, plip! Try something like `8:00pm` or `20:00`')
+          'The time you entered is invalid, plip! Try something like `8:00pm` or `20:00`'
         rescue TZInfo::InvalidTimezoneIdentifier
-          message.reply('One of your timezones is invalid, plip! Try something like `EST` or `GMT`')
+          'One of your timezones is invalid, plip! Try something like `EST` or `GMT`'
         end
       end
     end
