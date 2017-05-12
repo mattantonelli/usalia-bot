@@ -1,11 +1,10 @@
 require 'discordrb'
+require 'dotenv/load'
 require 'tzinfo'
 require 'yaml'
 
 module UsaliaBot
-  config = YAML.load_file('config/app.yml')
-  TOKEN = config['token']
-  CLIENT_ID = config['client_id']
+  TOKEN, CLIENT_ID = ENV.values_at('TOKEN', 'CLIENT_ID')
 
   bot = Discordrb::Commands::CommandBot.new(token: TOKEN, client_id: CLIENT_ID)
 
