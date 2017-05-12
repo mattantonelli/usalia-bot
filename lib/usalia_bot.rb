@@ -23,5 +23,7 @@ module UsaliaBot
     bot.include!(Events.const_get(event))
   end
 
+  COMMANDS = bot.commands
+
   bot.run
 end
