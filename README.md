@@ -14,9 +14,9 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 6. `cd usalia-bot`
 7. `bundle install`
 8. Set up the configuration file
-  * `cp .env.example .env`
-  * Replace the client_id and token with the ones generated for your bot user
-  * Replace the owner_id with the one for your user
+    * `cp .env.example .env`
+    * Replace the client_id and token with the ones generated for your bot user
+    * Replace the owner_id with the one for your user
 9. `ruby usalia.rb`
 
 ## Permissions
