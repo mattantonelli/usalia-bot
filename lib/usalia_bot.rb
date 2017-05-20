@@ -5,6 +5,7 @@ require 'yaml'
 
 module UsaliaBot
   TOKEN, CLIENT_ID = ENV.values_at('TOKEN', 'CLIENT_ID')
+  OWNER_ID = ENV['OWNER_ID'].to_i
 
   require_relative 'usalia_bot/helper_methods'
 
