@@ -16,6 +16,7 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 8. Set up the configuration file
   * `cp .env.example .env`
   * Replace the client_id and token with the ones generated for your bot user
+  * Replace the owner_id with the one for your user
 9. `ruby usalia.rb`
 
 ## Permissions
@@ -28,17 +29,44 @@ Usalia requires the following permissions to work in a channel:
 * Add Reactions
 
 ## Functions
-### Polls
+### Poll
 #### Description
 Creates a poll by adding reactions to any message starting with `/poll`. The :thumbsup: and :thumbsdown: reactions are added by default, but you can add your own emojis to the message to use those instead.
 
 #### Examples
 `/poll Metal Gear Solid 2 is the best MGS title.`
 
-:thumbsup: :thumbsdown:
-
 `/poll Would you rather go for :coffee: or :ice_cream: ?`
 
-:coffee: :ice_cream:
+![Poll](http://i.imgur.com/PJfbKDN.png)
 
-![Poll](http://imgur.com/J980x2a.gif)
+### Convert
+#### Description
+Converts time from one zone to another. This command tries to be smart about DST, and will correct the given zones appropriately (e.g. EST when it is actually EDT.) This command currently supports the continental US, the UK, and southeastern Australia.
+
+#### Examples
+`@Usalia convert 8:00am EST to GMT`
+
+`@Usalia convert 14:00 PST to EST`
+
+![Convert](http://i.imgur.com/BottAdX.png)
+
+### Random
+#### Description
+Rolls a random number from 1 to 999.
+
+#### Examples
+`@Usalia random`
+
+![Random](http://i.imgur.com/o84Vktm.png)
+
+### Ready Check
+#### Description
+Initiates a ready check for the mentioned users/roles. Users have 30 seconds to confirm they are ready by selecting a reaction on the bot's response message.
+
+#### Examples
+`@Usalia ready @user1 @user2`
+
+`@Usalia ready @role1 @role2`
+
+![Ready](http://i.imgur.com/BTmTHMv.png)
