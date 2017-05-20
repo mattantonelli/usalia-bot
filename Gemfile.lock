@@ -1,5 +1,6 @@
-GEM
-  remote: https://rubygems.org/
+GIT
+  remote: https://github.com/meew0/discordrb
+  revision: 0d36a808e388e416528b1ebe65490c5e0ad87136
   specs:
     discordrb (3.2.1)
       discordrb-webhooks (~> 3.2.0.1)
@@ -9,6 +10,10 @@ GEM
       websocket-client-simple (>= 0.3.0)
     discordrb-webhooks (3.2.0.1)
       rest-client
+
+GEM
+  remote: https://rubygems.org/
+  specs:
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
     dotenv (2.2.1)
@@ -43,7 +48,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  discordrb (~> 3.2.1)
+  discordrb!
   dotenv
   tzinfo
 

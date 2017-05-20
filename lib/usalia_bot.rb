@@ -12,7 +12,7 @@ module UsaliaBot
   mention_prefix = ["<@#{CLIENT_ID}>", "<@!#{CLIENT_ID}>"]
   bot = Discordrb::Commands::CommandBot.new(token: TOKEN, client_id: CLIENT_ID,
                                             prefix: mention_prefix, spaces_allowed: true,
-                                            help_command: false)
+                                            help_command: false, log_mode: :quiet)
 
   Dir['lib/usalia_bot/commands/*.rb'].each { |file| load file }
   Commands.constants.each do |event|
