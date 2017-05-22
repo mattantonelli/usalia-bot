@@ -8,7 +8,7 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 
 1. [Create a new Discord app](https://discordapp.com/developers/applications/me)
 2. Click "Create a Bot User"
-3. Insert your client ID into the following URL: `https://discordapp.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=68672`
+3. Insert your client ID into the following URL: `https://discordapp.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=76864`
 4. Follow the URL to add the bot to your server (requires the Manage Server permission)
 5. `git clone https://github.com/mattantonelli/usalia-bot`
 6. `cd usalia-bot`
@@ -25,6 +25,7 @@ Usalia requires the following permissions to work in a channel:
 
 * Read Messages
 * Send Messages
+* Manage Messages
 * Read Message History
 * Add Reactions
 
@@ -70,3 +71,11 @@ Initiates a ready check for the mentioned users/roles. Users have 30 seconds to 
 `@Usalia ready @role1 @role2`
 
 ![Ready](http://i.imgur.com/BTmTHMv.png)
+
+
+### Request
+#### Description
+A request is a call for help that can be issued by users with the configured Officer role when they react to a message with :bell: in any of the configured Request Channels. When Usalia sees the bell reaction added under these criteria, she will react to the message with the configured request reactions. An Officer can have the bot mention any users who reacted to the message by adding the :mega: reaction.
+
+#### Examples
+![Request](http://i.imgur.com/IfeRFVS.png)

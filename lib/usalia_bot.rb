@@ -5,7 +5,9 @@ require 'yaml'
 
 module UsaliaBot
   TOKEN, CLIENT_ID = ENV.values_at('TOKEN', 'CLIENT_ID')
-  OWNER_ID = ENV['OWNER_ID'].to_i
+  OWNER_ID, OFFICER_ROLE = ENV.values_at('OWNER_ID', 'OFFICER_ROLE_ID').map(&:to_i)
+  REQUEST_CHANNELS, REQUEST_REACTIONS =
+    ENV.values_at('REQUEST_CHANNEL_IDS', 'REQUEST_REACTIONS').map { |val| JSON.parse(val) }
 
   require_relative 'usalia_bot/helper_methods'
 
