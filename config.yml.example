@@ -1,0 +1,24 @@
+# Bot client ID
+client_id: 1234567890
+
+# Bot token
+token: 'abc123'
+
+# Bot owner ID
+owner_id: 2345678901
+
+# Officer role ID, AKA the role with access to admin actions
+officer_role_id: 3456789012
+
+# IDs for channels where requests can be made
+request_channel_ids:
+  - 12345
+  - 23456
+
+# Reactions to be added to verified requests
+request_reactions:
+  - 'tank:12345'
+  - 'healer:23456'
+  - 'dps:34567'
+  - 'mentor:45678'
+  - 'sprout:56789'

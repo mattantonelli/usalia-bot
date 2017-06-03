@@ -10,7 +10,7 @@ module UsaliaBot
         next unless request?(event) && officer?(event) && message.my_reactions.empty?
 
         # Add the configured request reactions
-        REQUEST_REACTIONS.each do |reaction|
+        CONFIG.request_reactions.each do |reaction|
           message.react(reaction)
         end
 

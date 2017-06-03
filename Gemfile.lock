@@ -16,7 +16,6 @@ GEM
   specs:
     domain_name (0.5.20170404)
       unf (>= 0.0.5, < 1.0.0)
-    dotenv (2.2.1)
     event_emitter (0.2.5)
     ffi (1.9.18)
     http-cookie (1.0.3)
@@ -49,7 +48,6 @@ PLATFORMS
 
 DEPENDENCIES
   discordrb!
-  dotenv
   tzinfo
 
 BUNDLED WITH

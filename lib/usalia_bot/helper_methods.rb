@@ -1,13 +1,13 @@
 module UsaliaBot
   module HelperMethods
-    MENTION = /<@!?#{CLIENT_ID}>/
+    MENTION = /<@!?#{CONFIG.client_id}>/
 
     def officer?(event)
-      event.user.on(event.channel.server).role?(OFFICER_ROLE)
+      event.user.on(event.channel.server).role?(CONFIG.officer_role_id)
     end
 
     def request?(event)
-      REQUEST_CHANNELS.include?(event.channel.id)
+      CONFIG.request_channel_ids.include?(event.channel.id)
     end
 
     def role_mention_members(message, readable = false)

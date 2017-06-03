@@ -4,7 +4,7 @@ module UsaliaBot
       extend Discordrb::Commands::CommandContainer
 
       command(:eval, help_available: false) do |event, *code|
-        break unless event.user.id == OWNER_ID
+        break unless event.user.id == CONFIG.owner_id
 
         begin
           eval code.join(' ')
