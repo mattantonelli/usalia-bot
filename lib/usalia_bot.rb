@@ -6,7 +6,7 @@ require 'yaml'
 Bundler.require(:default)
 
 module UsaliaBot
-  CONFIG = OpenStruct.new(YAML.load_file('config.yml'))
+  CONFIG = OpenStruct.new(YAML.load_file('config/config.yml'))
 
   require_relative 'usalia_bot/helper_methods'
 
