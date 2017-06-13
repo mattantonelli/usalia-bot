@@ -2,6 +2,10 @@ module UsaliaBot
   module HelperMethods
     MENTION = /<@!?#{CONFIG.client_id}>/
 
+    def author_display_name(event)
+      event.channel.pm? ? event.author.username : event.server.member(event.author).display_name
+    end
+
     def officer?(event)
       event.user.on(event.channel.server).role?(CONFIG.officer_role_id)
     end

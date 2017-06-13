@@ -5,9 +5,9 @@ module UsaliaBot
       extend UsaliaBot::HelperMethods
 
       command(:random, description: 'Roll a random number from 1 to 999.', usage: 'random') do |event|
-        user = event.author.display_name
+        name = author_display_name(event)
         result = rand(1..999)
-        "Random! #{user} rolls a #{result}."
+        "Random! #{name} rolls a #{result}."
       end
     end
   end
