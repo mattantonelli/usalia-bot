@@ -1,6 +1,8 @@
 require 'rubygems'
 require 'bundler/setup'
+require 'json'
 require 'ostruct'
+require 'time'
 require 'yaml'
 
 Bundler.require(:default)
@@ -9,6 +11,8 @@ module UsaliaBot
   CONFIG = OpenStruct.new(YAML.load_file('config/config.yml'))
 
   require_relative 'usalia_bot/helper_methods'
+  require_relative 'usalia_bot/redis'
+  require_relative 'usalia_bot/scheduler'
 
   mention_prefix = ["<@#{CONFIG.client_id}>", "<@!#{CONFIG.client_id}>"]
   bot = Discordrb::Commands::CommandBot.new(token: CONFIG.token, client_id: CONFIG.client_id,
@@ -25,6 +29,7 @@ module UsaliaBot
     bot.include!(Events.const_get(event))
   end
 
+  Scheduler.run(bot)
 
   bot.run
 end
