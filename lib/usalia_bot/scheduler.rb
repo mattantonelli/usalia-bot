@@ -10,10 +10,18 @@ module UsaliaBot
       scheduler.every('5m') do
         channels = JSON.parse(Redis.get_json('temp-channels'))
 
-        channels.each do |user_id, channel|
-          expiration_time = Time.parse(channel['created_at']) + TEMP_CHANNEL_LIFESPAN
-          channel = bot.channel(channel['channel_id'])
+        channels.each do |user_id, details|
+          channel = bot.channel(details['channel_id'])
 
+          # If the channel was deleted manually, remove it from redis
+          if channel.nil?
+            channels.delete(user_id)
+            next
+          end
+
+          expiration_time = Time.parse(details['created_at']) + TEMP_CHANNEL_LIFESPAN
+
+          # If the channel's time has expired, delete it and remove it from redis
           if expiration_time < Time.now && channel.users.empty?
             channel.delete
             channels.delete(user_id)
