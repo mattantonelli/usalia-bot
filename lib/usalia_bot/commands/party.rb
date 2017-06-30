@@ -20,11 +20,18 @@ module UsaliaBot
           channel = event.server.create_channel(channel_name, 2)
           channels[user_id] = { channel_id: channel.id, created_at: Time.now }
           Redis.set('temp-channels', channels.to_json)
-
-          "A new party channel has been created for #{event.author.mention}, plip!"
+          reply = event.message.reply("A new party channel has been created for #{event.author.mention}, plip!")
         else
-          'You already have your own party channel, plip!'
+          reply = event.message.reply('You already have your own party channel, plip!')
         end
+
+        delete_request(30, event, reply)
+      end
+
+      def self.delete_request(time, event, reply)
+        sleep(time)
+        event.message.delete
+        reply.delete
       end
     end
   end
