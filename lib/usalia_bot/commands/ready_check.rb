@@ -11,13 +11,7 @@ module UsaliaBot
         author = event.author
         message = event.message
 
-        # Mentions include any users mentioned in the message (except for the bot),
-        # any members in mentioned roles,
-        # and the user who initiated the ready check
-        mentions = message.mentions.reject(&:current_bot?).map(&:id)
-        mentions += role_mention_members(message, true).map(&:id)
-        mentions << author.id
-        mentions.uniq!
+        mentions = message_mentions(message, readable: true)
 
         if mentions.size == 1
           return message.reply('You need to mention at least one other user, plip!')
@@ -32,7 +26,7 @@ module UsaliaBot
 
         # Mentioned users who have reacted with :white_check_mark: are considered ready
         # The user who initiated the ready check is considered ready by default
-        ready_users = mentions & event.channel.message(check.id).reacted_with('✅').push(author).map(&:id)
+        ready_users = mentions & event.channel.message(check.id).reacted_with('✅').push(author)
 
         # All remaining mentioned users are considered not ready
         not_ready_users = mentions - ready_users

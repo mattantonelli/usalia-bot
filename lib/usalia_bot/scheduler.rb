@@ -12,23 +12,13 @@ module UsaliaBot
 
         channels.each do |user_id, details|
           channel = bot.channel(details['channel_id'])
-
-          # If the channel was deleted manually, remove it from redis
-          if channel.nil?
-            channels.delete(user_id)
-            next
-          end
-
           expiration_time = Time.parse(details['created_at']) + TEMP_CHANNEL_LIFESPAN
 
-          # If the channel's time has expired, delete it and remove it from redis
-          if expiration_time < Time.now && channel.users.empty?
-            channel.delete
-            channels.delete(user_id)
+          # If the channel was deleted manually, or its time has expired, disband the party
+          if channel.nil? || (expiration_time < Time.now && channel.users.empty?)
+            UsaliaBot::Commands::Party.disband_party(bot, user_id)
           end
         end
-
-        Redis.set('temp-channels', channels.to_json)
       end
     end
   end
