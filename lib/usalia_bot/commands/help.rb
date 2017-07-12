@@ -19,13 +19,16 @@ module UsaliaBot
             "Help is not available for `#{command_name}`"
           end
         else
-          available_commands = event.bot.commands.values.reject { |c| !c.attributes[:help_available] }
+          available_commands = event.bot.commands.values
+            .reject { |c| !c.attributes[:help_available] }
+            .sort_by(&:name)
 
           command_list = available_commands.reduce("For detailed usage: help <command>\n\n") do |memo, c|
             memo + "%-15s%s\n" % [c.name, c.attributes[:description] || '[No description available]']
           end
 
           event.user.pm("```\n#{command_list}\n```")
+          event.message.delete unless event.channel.pm?
         end
       end
     end

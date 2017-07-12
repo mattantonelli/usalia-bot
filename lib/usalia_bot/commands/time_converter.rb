@@ -2,6 +2,7 @@ module UsaliaBot
   module Commands
     module TimeConverter
       extend Discordrb::Commands::CommandContainer
+      extend UsaliaBot::HelperMethods
       include HelperMethods
 
       TIME_REGEX = /convert (\d{1,2}:\d{1,2}(?:\s?[ap]m)?)\s([a-z]{3,}) to ([a-z]{3,})/i
@@ -18,8 +19,9 @@ module UsaliaBot
         match = message.content.match(TIME_REGEX)
 
         if match.nil?
-          return message.reply("I can't understand your message, plip! " \
-                               'Try something like this: `convert 8:00pm EST to GMT`')
+          reply = message.reply("I can't understand your message, plip! " \
+                                'Try something like this: `convert 8:00pm EST to GMT`')
+          return delete_request(message, reply)
         end
 
         time, zone, requested_zone = match.captures
