@@ -22,3 +22,6 @@ request_reactions:
   - 'dps:34567'
   - 'mentor:45678'
   - 'sprout:56789'
+
+# ID for introduction channel
+introduction_channel_id: 3456789012
