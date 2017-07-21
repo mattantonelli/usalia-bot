@@ -32,7 +32,7 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         info 'Starting the bot'
-        execute *%w(screen -d -S usalia -m bundle exec ruby run.rb > ./log/production.log)
+        execute 'screen -d -S usalia -m bundle exec ruby run.rb'
       end
     end
   end
