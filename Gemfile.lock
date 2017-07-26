@@ -80,6 +80,7 @@ DEPENDENCIES
   capistrano-rbenv (~> 2.1)
   discordrb!
   redis-namespace
+  rest-client
   rufus-scheduler
   tzinfo
 

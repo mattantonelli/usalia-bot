@@ -6,6 +6,10 @@ module UsaliaBot
       event.channel.pm? ? event.author.username : event.server.member(event.author).display_name
     end
 
+    def capitalize(str)
+      str.sub(/^./, &:upcase)
+    end
+
     def delete_request(message, reply, time = 30)
       return if message.channel.pm?
 

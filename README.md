@@ -118,3 +118,15 @@ Disbands your party.
 
 #### Usage
 `@Usalia disband`
+
+### Yu-Gi-Oh!
+#### Description
+Looks up a Yu-Gi-Oh! card by name. All of the card's major information is provided as an embed, and a link is provided to the full-sized card image.
+
+Card data provided by the [Yu-Gi-Oh Prices](https://yugiohprices.com/) [API](http://docs.yugiohprices.apiary.io/#).
+
+#### Usage
+`@Usalia yugioh blue-eyes white dragon`
+
+#### Examples
+![Yu-Gi-Oh!](http://i.imgur.com/2XxtPiW.png)
