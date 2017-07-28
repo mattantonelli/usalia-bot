@@ -14,8 +14,8 @@ module UsaliaBot
       return if message.channel.pm?
 
       sleep(time)
-      message.delete
-      reply.delete
+      safe_delete(message)
+      safe_delete(reply)
     end
 
     def message_mentions(message, include_author: true, include_bot: false, readable: false)
@@ -46,6 +46,10 @@ module UsaliaBot
 
     def request?(event)
       CONFIG.request_channel_ids.include?(event.channel.id)
+    end
+
+    def safe_delete(message)
+      message.channel.load_message(message.id)&.delete
     end
 
     private
