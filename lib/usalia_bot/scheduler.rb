@@ -24,6 +24,7 @@ module UsaliaBot
       end
 
       # Purge members who have not been assigned a role
+      # and delete any old introduction messages by the bot
       scheduler.cron('0 0 * * FRI') do
         server = bot.servers.values.first
 
@@ -32,6 +33,14 @@ module UsaliaBot
 
           if member.roles.empty? && join_time + MEMBER_PURGE_TIME < Time.now
             server.kick(member, 'No role')
+          end
+        end
+
+        channel = bot.channel(CONFIG.introduction_channel_id)
+
+        channel.history(100).each do |message|
+          if message.author.current_bot? && message.timestamp < Time.now - MEMBER_PURGE_TIME
+            message.delete
           end
         end
       end

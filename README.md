@@ -95,6 +95,10 @@ A request is a call for help that can be issued by users with the configured Off
 #### Description
 Welcomes new members to the server in the configured Introductions channel.
 
+### Auto Purge
+#### Description
+Members are automatically purged every Friday morning at 00:00 if they have been a member for over a week and they have no roles assigned. Usalia will also delete any recent posts she made in the Introductions channel that are older than a week.
+
 #### Examples
 ![Introductions](http://i.imgur.com/kMmEn17.png)
 
