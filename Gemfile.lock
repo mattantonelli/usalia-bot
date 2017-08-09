@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/meew0/discordrb
-  revision: 83d2960be0ce7702da66d51346afe8a05f674f4e
+  revision: 1602f19af433af315ddbc67b4b98a73d7d6b8016
   specs:
     discordrb (3.2.1)
       discordrb-webhooks (~> 3.2.0.1)
@@ -31,7 +31,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     et-orbi (1.0.4)
       tzinfo
-    event_emitter (0.2.5)
+    event_emitter (0.2.6)
     ffi (1.9.18)
     http-cookie (1.0.3)
       domain_name (~> 0.5)

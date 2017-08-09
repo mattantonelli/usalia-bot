@@ -25,7 +25,7 @@ module UsaliaBot
 
       # Purge members who have not been assigned a role
       # and delete any old introduction messages by the bot
-      scheduler.cron('0 0 * * FRI') do
+      scheduler.cron('0 0 * * *') do
         server = bot.servers.values.first
 
         server.members.each do |member|
