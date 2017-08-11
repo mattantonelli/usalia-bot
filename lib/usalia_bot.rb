@@ -13,7 +13,9 @@ module UsaliaBot
   require_relative 'usalia_bot/helper_methods'
   require_relative 'usalia_bot/redis'
 
-  Discordrb::LOGGER.streams << File.open('log.txt', 'a')
+  logfile = File.open('log.txt', 'a')
+  $stderr = logfile
+  Discordrb::LOGGER.streams << logfile
 
   mention_prefix = ["<@#{CONFIG.client_id}>", "<@!#{CONFIG.client_id}>"]
   bot = Discordrb::Commands::CommandBot.new(token: CONFIG.token, client_id: CONFIG.client_id,
