@@ -28,7 +28,7 @@ module UsaliaBot
       scheduler.cron('0 0 * * *') do
         server = bot.servers.values.first
 
-        server.members.each do |member|
+        server.members.compact.each do |member|
           next unless join_time = member.joined_at
 
           if member.roles.empty? && join_time + MEMBER_PURGE_TIME < Time.now
