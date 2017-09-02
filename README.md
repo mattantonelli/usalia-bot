@@ -16,7 +16,7 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 8. Set up the configuration file
     * `cp config/config.yml.example config/config.yml`
     * Updated the example values appropriately
-9. `ruby usalia.rb`
+9. `ruby run.rb`
 
 ## Permissions
 
