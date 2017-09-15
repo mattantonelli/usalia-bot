@@ -134,3 +134,13 @@ Card data provided by the [Yu-Gi-Oh Prices](https://yugiohprices.com/) [API](htt
 
 #### Examples
 ![Yu-Gi-Oh!](http://i.imgur.com/2XxtPiW.png)
+
+### Stream
+#### Description
+Broadcasts when a user starts streaming using the Twitch connection. Updates are sent to the configured Twitch channel after a user has enabled the feature for their account.
+
+#### Usage
+`@Usalia stream <on/off/status>`
+
+#### Examples
+![Stream](https://i.imgur.com/1skSg8J.png)

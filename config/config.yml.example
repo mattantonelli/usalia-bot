@@ -25,3 +25,7 @@ request_reactions:
 
 # ID for introduction channel
 introduction_channel_id: 3456789012
+
+# ID for Twitch channel
+introduction_channel_id: 4567890123
+twitch_client_id: 'def456'
