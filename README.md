@@ -144,3 +144,13 @@ Broadcasts when a user starts streaming using the Twitch connection. Updates are
 
 #### Examples
 ![Stream](https://i.imgur.com/1skSg8J.png)
+
+### FF Logs
+#### Description
+Posts FF Logs reports for users in their configured channels after they are uploaded. Logs must be uploaded within 24 hours after their start time. Logs for a given user can be posted in a single channel, as configured by the bot owner via commands.
+
+#### Usage
+`@Usalia fflogs <owner> <on/off/status>`
+
+#### Examples
+![FF Logs](https://i.imgur.com/1ZAWTP1.png)

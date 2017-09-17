@@ -44,6 +44,11 @@ module UsaliaBot
           end
         end
       end
+
+      # Poll FF Logs for new reports
+      scheduler.every('5m') do
+        FFLogs.poll(bot)
+      end
     end
   end
 end

@@ -12,6 +12,10 @@ module UsaliaBot
       REDIS.hget(key, field)
     end
 
+    def hgetall(key)
+      REDIS.hgetall(key)
+    end
+
     def hexists?(key, field)
       REDIS.hexists(key, field)
     end

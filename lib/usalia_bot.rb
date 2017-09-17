@@ -12,6 +12,7 @@ module UsaliaBot
 
   require_relative 'usalia_bot/helper_methods'
   require_relative 'usalia_bot/redis'
+  require_relative 'usalia_bot/fflogs'
 
   logfile = File.open('log.txt', 'a')
   $stderr = logfile
