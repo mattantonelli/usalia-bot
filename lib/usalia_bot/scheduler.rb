@@ -8,8 +8,13 @@ module UsaliaBot
     def self.run(bot)
       scheduler = Rufus::Scheduler.new
 
+      def scheduler.on_error(job, error)
+        Discordrb::LOGGER.error(error)
+        Discordrb::LOGGER.error(error.backtrace.first)
+      end
+
       # Clean up temporary channels
-      scheduler.every('5m') do
+      scheduler.cron('*/5 * * * *') do
         channels = JSON.parse(Redis.get_json('temp-channels'))
 
         channels.each do |user_id, details|
@@ -46,7 +51,7 @@ module UsaliaBot
       end
 
       # Poll FF Logs for new reports
-      scheduler.every('5m') do
+      scheduler.cron('*/5 * * * *') do
         FFLogs.poll(bot)
       end
     end

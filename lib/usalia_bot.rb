@@ -14,10 +14,6 @@ module UsaliaBot
   require_relative 'usalia_bot/redis'
   require_relative 'usalia_bot/fflogs'
 
-  logfile = File.open('log.txt', 'a')
-  $stderr = logfile
-  Discordrb::LOGGER.streams << logfile
-
   mention_prefix = ["<@#{CONFIG.client_id}>", "<@!#{CONFIG.client_id}>"]
   bot = Discordrb::Commands::CommandBot.new(token: CONFIG.token, client_id: CONFIG.client_id,
                                             prefix: mention_prefix, spaces_allowed: true,
@@ -35,6 +31,10 @@ module UsaliaBot
 
   require_relative 'usalia_bot/scheduler'
   Scheduler.run(bot)
+
+  logfile = File.open('log.txt', 'a')
+  $stderr = logfile
+  Discordrb::LOGGER.streams << logfile
 
   bot.run
 end
