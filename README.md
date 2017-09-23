@@ -8,7 +8,7 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 
 1. [Create a new Discord app](https://discordapp.com/developers/applications/me)
 2. Click "Create a Bot User"
-3. Insert your client ID into the following URL: `https://discordapp.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=268643410`
+3. Insert your client ID into the following URL: `https://discordapp.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=268659794`
 4. Follow the URL to add the bot to your server (requires the Manage Server permission)
 5. `git clone https://github.com/mattantonelli/usalia-bot`
 6. `cd usalia-bot`
@@ -16,7 +16,7 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 8. Set up the configuration file
     * `cp config/config.yml.example config/config.yml`
     * Updated the example values appropriately
-9. `ruby run.rb`
+9. `bundle exec ruby run.rb`
 
 ## Permissions
 
@@ -25,9 +25,10 @@ Usalia requires the following permissions to work in a channel:
 * Manage Roles
 * Manage Channels
 * Kick Members
-* Read Messages
+* Read Text Channels & See Voice Channels
 * Send Messages
 * Manage Messages
+* Embed Links
 * Read Message History
 * Mention Everyone
 * Add Reactions
