@@ -13,6 +13,7 @@ module UsaliaBot
   require_relative 'usalia_bot/helper_methods'
   require_relative 'usalia_bot/redis'
   require_relative 'usalia_bot/fflogs'
+  require_relative 'usalia_bot/twitch'
 
   mention_prefix = ["<@#{CONFIG.client_id}>", "<@!#{CONFIG.client_id}>"]
   bot = Discordrb::Commands::CommandBot.new(token: CONFIG.token, client_id: CONFIG.client_id,

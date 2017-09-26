@@ -54,6 +54,11 @@ module UsaliaBot
       scheduler.cron('*/5 * * * *') do
         FFLogs.poll(bot)
       end
+
+      # Poll Twitch for stream updates
+      scheduler.cron('*/5 * * * *') do
+        Twitch.poll(bot)
+      end
     end
   end
 end
