@@ -2,22 +2,27 @@ module UsaliaBot
   module Commands
     module Help
       extend Discordrb::Commands::CommandContainer
+      extend UsaliaBot::HelperMethods
 
       command(:help, description: 'Shows a list of all the commands available or displays help for a specific command.',
-              max_args: 1, usage: 'help <command>') do |event, command_name|
+              usage: 'help <command>') do |event, command_name|
         if command_name
-          command = event.bot.commands[command_name.to_sym]
-          return event.message.reply("I don't understand `#{command_name}`, plip!") unless command
-          desc = command.attributes[:description]
-          usage = command.attributes[:usage]
+          if command = event.bot.commands[command_name.to_sym]
+            desc = command.attributes[:description]
+            usage = command.attributes[:usage]
 
-          if usage
-            result = "Usage: #{usage}"
-            result += "\n\n#{desc}" if desc
-            "```\n#{result}\n```"
+            if usage
+              result = "Usage: #{usage}"
+              result += "\n\n#{desc}" if desc
+              reply = event.message.reply("```\n#{result}\n```")
+            else
+              reply = event.message.reply("Help is not available for `#{command_name}`")
+            end
           else
-            "Help is not available for `#{command_name}`"
+            reply = event.message.reply("I don't understand `#{command_name}`, plip!") unless command
           end
+
+          delete_request(event.message, reply)
         else
           available_commands = event.bot.commands.values
             .reject { |c| !c.attributes[:help_available] }

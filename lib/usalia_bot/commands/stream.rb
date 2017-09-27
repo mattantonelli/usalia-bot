@@ -8,13 +8,13 @@ module UsaliaBot
 
       description = 'Broadcasts when you start streaming. Your Discord account must be connected to Twitch.'
 
-      command(:stream, description: description, max_args: 1, usage: 'stream <on/off/status>') do |event, option|
+      command(:stream, description: description, usage: 'stream <on/off/status>') do |event, option|
         parse_event(event, event.user.id, :stream, option)
       end
 
-      command(:twitch, min_args: 2, max_args: 2, usage: 'twitch <username> <on/off/status>', help_available: false,
-              required_permissions: [:administrator], permission_message: false) do |event, username, option|
-        user = Twitch.user(username)
+      command(:twitch, usage: 'twitch <username> <on/off/status>', required_permissions: [:administrator],
+              help_available: false, permission_message: false) do |event, username, option|
+        user = Twitch.user(username) if username
 
         if user
           parse_event(event, user[:_id], :twitch, option)

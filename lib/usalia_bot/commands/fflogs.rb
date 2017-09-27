@@ -5,9 +5,8 @@ module UsaliaBot
       extend UsaliaBot::HelperMethods
       include UsaliaBot::Redis
 
-      command(:fflogs, help_available: false) do |event, owner, option|
-        break unless event.user.id == CONFIG.owner_id
-
+      command(:fflogs, help_available: false, required_permissions: [:administrator],
+              permission_message: false) do |event, owner, option|
         case(option)
         when 'on'
           Redis.hset('fflogs-channels', owner.downcase, event.channel.id)

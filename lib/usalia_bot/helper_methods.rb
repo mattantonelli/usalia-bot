@@ -10,7 +10,7 @@ module UsaliaBot
       str.sub(/^./, &:upcase)
     end
 
-    def delete_request(message, reply, time = 30)
+    def delete_request(message, reply, time = 20)
       return if message.channel.pm?
 
       sleep(time)

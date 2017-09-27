@@ -7,7 +7,10 @@ module UsaliaBot
     TWITCH_DEFAULT_THUMBNAIL = 'https://static-cdn.jtvnw.net/jtv_user_pictures/xarth/404_user_300x300.png'
 
     def poll(bot)
-      streams = live_streams(Redis.hkeys('twitch-status'))
+      channel_ids = Redis.hkeys('twitch-status')
+      return if channel_ids.empty?
+
+      streams = live_streams(channel_ids)
       stream_channel_ids = streams.map { |stream| stream[:channel][:_id].to_s }
       current_streams = Redis.hgetall('twitch-status').select { |id, status| status == 'active'}
       channel = bot.channel(CONFIG.twitch_channel_id)
@@ -20,13 +23,11 @@ module UsaliaBot
         send_twitch_embed(stream, channel) if new_stream?(id, :twitch)
         set_status(id, :twitch, 'active')
         set_time(id, :twitch)
-        channel.send_message("Stream started for `#{id}`")
       end
 
       ended_streams.each do |id, _|
         set_status(id, :twitch, 'inactive')
         set_time(id, :twitch)
-        channel.send_message("Stream ended for `#{id}`")
       end
     end
 
