@@ -3,7 +3,6 @@ module UsaliaBot
     module FFLogs
       extend Discordrb::Commands::CommandContainer
       extend UsaliaBot::HelperMethods
-      include UsaliaBot::Redis
 
       command(:fflogs, help_available: false, required_permissions: [:administrator],
               permission_message: false) do |event, owner, option|

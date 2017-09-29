@@ -2,25 +2,12 @@ module UsaliaBot
   module Events
     module Poll
       extend Discordrb::EventContainer
+      extend UsaliaBot::HelperMethods
 
-      emoji_list = File.read('data/emoji_list.txt').chomp
-      EMOJI_REGEX = /(#{emoji_list})|(?:<:(\w+:\d+)>)/
-
-      message(start_with: /\/poll/i) do |event|
-        message = event.message
-        emojis = message.content.scan(EMOJI_REGEX).flatten.compact
-
-        if emojis.empty?
-          message.react('👍') # :thumbsup:
-          message.react('👎') # :thumbsdown:
-        else
-          emojis.each { |emoji| message.react(emoji) }
-        end
-      end
-
-      message_edit(start_with: /\/poll/i) do |event|
+      # Add/remove reactions when a poll message's contained emojis change
+      message_edit(start_with: /#{bot_mention} poll/i) do |event|
         message = event.channel.message(event.message.id)
-        emojis = message.content.scan(EMOJI_REGEX).flatten.compact
+        emojis = message.content.scan(emoji_regex).flatten.compact
         bot_reactions = message.reactions.values.select(&:me)
           .map { |reaction| [reaction.name, reaction.id].compact.join(':') }
 

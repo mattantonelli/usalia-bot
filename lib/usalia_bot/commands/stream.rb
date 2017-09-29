@@ -3,8 +3,6 @@ module UsaliaBot
     module Stream
       extend Discordrb::Commands::CommandContainer
       extend UsaliaBot::HelperMethods
-      include UsaliaBot::Redis
-      include UsaliaBot::Twitch
 
       description = 'Broadcasts when you start streaming. Your Discord account must be connected to Twitch.'
 

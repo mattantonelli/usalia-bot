@@ -40,15 +40,15 @@ Usalia is set up for [Capistrano](https://github.com/capistrano/capistrano) depl
 ## Functions
 ### Poll
 #### Description
-Creates a poll by adding reactions to any message starting with `/poll`. The :thumbsup: and :thumbsdown: reactions are added by default, but you can add your own emojis to the message to use those instead.
+Creates a poll by adding reactions to the command message. The :thumbsup: and :thumbsdown: reactions are added by default, but you can add your own emojis to the message to use those instead.
 
 #### Usage
-`/poll Metal Gear Solid 2 is the best MGS title.`
+`@Usalia poll Metal Gear Solid 2 is the best MGS title.`
 
-`/poll Would you rather go for :coffee: or :ice_cream: ?`
+`@Usalia poll Would you rather go for :coffee: or :ice_cream: ?`
 
 #### Examples
-![Poll](http://i.imgur.com/PJfbKDN.png)
+![Poll](https://i.imgur.com/WunCaSN.png)
 
 ### Convert
 #### Description

@@ -2,10 +2,10 @@ module UsaliaBot
   module Events
     module Memes
       extend Discordrb::EventContainer
-      include HelperMethods
+      extend UsaliaBot::HelperMethods
 
       # curry|:curry:
-      message(content: /#{MENTION} such a lust for (?:curry|🍛)/i) do |event|
+      message(content: /#{bot_mention} such a lust for (?:curry|🍛)/i) do |event|
         event.message.reply('*Whooooooooo!?*')
       end
     end

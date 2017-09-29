@@ -1,7 +1,5 @@
 module UsaliaBot
   module Scheduler
-    include UsaliaBot::Redis
-
     MEMBER_PURGE_TIME = 604800.freeze # 1 week
     TEMP_CHANNEL_LIFESPAN = 3600.freeze # 1 hour
 
@@ -10,7 +8,7 @@ module UsaliaBot
 
       def scheduler.on_error(job, error)
         Discordrb::LOGGER.error(error)
-        Discordrb::LOGGER.error(error.backtrace.first)
+        error.backtrace.each { |line| Discordrb::LOGGER.error(line) }
       end
 
       # Clean up temporary channels

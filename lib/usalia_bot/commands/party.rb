@@ -3,7 +3,6 @@ module UsaliaBot
     module Party
       extend Discordrb::Commands::CommandContainer
       extend UsaliaBot::HelperMethods
-      include UsaliaBot::Redis
 
       command(:party, description: 'Creates a temporary voice channel for a party. ' \
               'Creates a private channel if other users are tagged.',

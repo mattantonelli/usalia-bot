@@ -10,10 +10,7 @@ Bundler.require(:default)
 module UsaliaBot
   CONFIG = OpenStruct.new(YAML.load_file('config/config.yml'))
 
-  require_relative 'usalia_bot/helper_methods'
-  require_relative 'usalia_bot/redis'
-  require_relative 'usalia_bot/fflogs'
-  require_relative 'usalia_bot/twitch'
+  Dir['lib/usalia_bot/*.rb'].each { |file| load file }
 
   mention_prefix = ["<@#{CONFIG.client_id}>", "<@!#{CONFIG.client_id}>"]
   bot = Discordrb::Commands::CommandBot.new(token: CONFIG.token, client_id: CONFIG.client_id,
@@ -30,7 +27,6 @@ module UsaliaBot
     bot.include!(Events.const_get(event))
   end
 
-  require_relative 'usalia_bot/scheduler'
   Scheduler.run(bot)
 
   logfile = File.open('log.txt', 'a')

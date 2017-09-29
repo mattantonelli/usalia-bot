@@ -1,9 +1,14 @@
 module UsaliaBot
   module HelperMethods
-    MENTION = /<@!?#{CONFIG.client_id}>/
+    MENTION = /<@!?#{CONFIG.client_id}>/.freeze
+    EMOJI_REGEX = /(#{File.read('data/emoji_list.txt').chomp})|(?:<:(\w+:\d+)>)/.freeze
 
     def author_display_name(event)
       event.channel.pm? ? event.author.username : event.server.member(event.author).display_name
+    end
+
+    def bot_mention
+      MENTION
     end
 
     def capitalize(str)
@@ -16,6 +21,10 @@ module UsaliaBot
       sleep(time)
       safe_delete(message)
       safe_delete(reply)
+    end
+
+    def emoji_regex
+      EMOJI_REGEX
     end
 
     def message_mentions(message, include_author: true, include_bot: false, readable: false)

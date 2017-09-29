@@ -3,8 +3,6 @@ module UsaliaBot
     module Stream
       extend Discordrb::EventContainer
       extend UsaliaBot::HelperMethods
-      include UsaliaBot::Redis
-      include UsaliaBot::Twitch
 
       playing do |event|
         # User must first enable stream updates with the "stream on" command

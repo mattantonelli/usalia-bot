@@ -3,7 +3,6 @@ module UsaliaBot
     module TimeConverter
       extend Discordrb::Commands::CommandContainer
       extend UsaliaBot::HelperMethods
-      include HelperMethods
 
       TIME_REGEX = /convert (\d{1,2}:\d{1,2}(?:\s?[ap]m)?)\s([a-z]{3,}) to ([a-z]{3,})/i
       ZONE_CONVERSIONS = { est: 'America/New_York', edt: 'America/New_York',
