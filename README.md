@@ -20,7 +20,7 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 
 ## Permissions
 
-Usalia requires the following permissions to work in a channel:
+Usalia requires the following permissions:
 
 * Manage Roles
 * Manage Channels
@@ -87,7 +87,7 @@ Initiates a ready check for the mentioned users/roles. Users have 30 seconds to 
 
 ### Request
 #### Description
-A request is a call for help that can be issued by users with the configured Officer role when they react to a message with :bell: in any of the configured Request Channels. When Usalia sees the bell reaction added under these criteria, she will react to the message with the configured request reactions. An Officer can have the bot mention any users who reacted to the message by adding the :mega: reaction.
+A request is a call for help that can be issued by users with the **Mention Everyone** permission  when they react to a message with :bell: in any of the configured Request Channels. When Usalia sees the bell reaction added under these criteria, she will react to the message with the configured request reactions. A user with the **Mention Everyone** permission can also have the bot mention any users who reacted to the message by adding the :mega: reaction.
 
 #### Examples
 ![Request](http://i.imgur.com/IfeRFVS.png)

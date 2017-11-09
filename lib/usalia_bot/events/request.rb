@@ -4,10 +4,10 @@ module UsaliaBot
       extend Discordrb::EventContainer
       extend UsaliaBot::HelperMethods
 
-      # When an officer first adds the :bell: reaction to a message in the request channel
+      # When a qualified user first adds the :bell: reaction to a message in the request channel
       reaction_add(emoji: '🔔') do |event|
         message = event.message
-        next unless request?(event) && officer?(event) && message.my_reactions.empty?
+        next unless request?(event) && event.user.permission?(:mention_everyone) && message.my_reactions.empty?
 
         # Add the configured request reactions
         CONFIG.request_reactions.each do |reaction|
@@ -21,9 +21,9 @@ module UsaliaBot
         message.delete_reaction(event.user, '🔔')
       end
 
-      # When an officer adds the :mega: reaction to a message in the request channel
+      # When a qualified officer adds the :mega: reaction to a message in the request channel
       reaction_add(emoji: '📣') do |event|
-        next unless request?(event) && officer?(event)
+        next unless request?(event) && event.user.permission?(:mention_everyone)
 
         message = event.message
 

@@ -7,9 +7,6 @@ token: 'abc123'
 # Bot owner ID
 owner_id: 2345678901
 
-# Officer role ID, AKA the role with access to admin actions
-officer_role_id: 3456789012
-
 # IDs for channels where requests can be made
 request_channel_ids:
   - 12345

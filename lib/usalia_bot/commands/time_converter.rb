@@ -4,12 +4,12 @@ module UsaliaBot
       extend Discordrb::Commands::CommandContainer
       extend UsaliaBot::HelperMethods
 
-      TIME_REGEX = /convert (\d{1,2}:\d{1,2}(?:\s?[ap]m)?)\s([a-z]{3,}) to ([a-z]{3,})/i
-      ZONE_CONVERSIONS = { est: 'America/New_York', edt: 'America/New_York',
-                           cst: 'America/Chicago', cdt: 'America/Chicago',
-                           mst: 'America/Denver', mdt: 'America/Denver',
-                           pst: 'America/Los_Angeles', pdt: 'America/Los_Angeles',
-                           aest: 'Australia/Melbourne', aedt: 'Australia/Melbourne',
+      TIME_REGEX = /convert (\d{1,2}(?::\d{1,2})?(?:\s?[ap]m)?)\s([a-z]{2,}) to ([a-z]{2,})/i
+      ZONE_CONVERSIONS = { et: 'America/New_York', est: 'America/New_York', edt: 'America/New_York',
+                           ct: 'America/Chicago', cst: 'America/Chicago', cdt: 'America/Chicago',
+                           mt: 'America/Denver', mst: 'America/Denver', mdt: 'America/Denver',
+                           pt: 'America/Los_Angeles', pst: 'America/Los_Angeles', pdt: 'America/Los_Angeles',
+                           aet: 'Australia/Melbourne', aest: 'Australia/Melbourne', aedt: 'Australia/Melbourne',
                            bst: 'Europe/London' }
 
       command(:convert, description: 'Convert time from one zone to another.',
@@ -19,8 +19,8 @@ module UsaliaBot
 
         if match.nil?
           reply = message.reply("I can't understand your message, plip! " \
-                                'Try something like this: `convert 8:00pm EST to GMT`')
-          return delete_request(message, reply)
+                                'Try something like this: `convert 8pm EST to GMT`')
+          return delete_request(message, reply, 10)
         end
 
         time, zone, requested_zone = match.captures
@@ -38,9 +38,11 @@ module UsaliaBot
           result = requested_time.strftime("%l:%M%P #{requested_zone_abbreviation}")
           result
         rescue ArgumentError
-          'The time you entered is invalid, plip! Try something like `8:00pm` or `20:00`'
+          reply = event.message.reply('The time you entered is invalid, plip! Try something like `8pm`, `8:00pm`, or `20:00`')
+          delete_request(event.message, reply, 10)
         rescue TZInfo::InvalidTimezoneIdentifier
-          'One of your timezones is invalid, plip! Try something like `EST` or `GMT`'
+          reply = event.message.reply('One of your timezones is invalid, plip! Try something like `EST` or `GMT`')
+          delete_request(event.message, reply, 10)
         end
       end
     end

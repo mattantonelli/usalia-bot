@@ -49,10 +49,6 @@ module UsaliaBot
       mentions.uniq
     end
 
-    def officer?(event)
-      event.user.on(event.channel.server).role?(CONFIG.officer_role_id)
-    end
-
     def request?(event)
       CONFIG.request_channel_ids.include?(event.channel.id)
     end
