@@ -162,3 +162,13 @@ Posts FF Logs reports for users in their configured channels after they are uplo
 
 #### Examples
 ![FF Logs](https://i.imgur.com/1ZAWTP1.png)
+
+### YouTube
+#### Description
+Posts the top YouTube search result for the given query.
+
+#### Usage
+`@Usalia youtube <query>`
+
+#### Examples
+![YouTube](https://i.imgur.com/Wovya73.png)
