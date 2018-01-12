@@ -172,3 +172,13 @@ Posts the top YouTube search result for the given query.
 
 #### Examples
 ![YouTube](https://i.imgur.com/Wovya73.png)
+
+### Temperature
+#### Description
+Converts between Celsius and Fahrenheit.
+
+#### Usage
+`@Usalia temp <value> <C/F>`
+
+#### Examples
+![Temperature](https://i.imgur.com/86VWJvB.png)
