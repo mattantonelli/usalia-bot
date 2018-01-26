@@ -182,3 +182,15 @@ Converts between Celsius and Fahrenheit.
 
 #### Examples
 ![Temperature](https://i.imgur.com/86VWJvB.png)
+
+### Magic: The Gathering
+#### Description
+Looks up a Magic: The Gathering card by name. All of the card's major information is provided as an embed, and a link is provided to the full-sized card image.
+
+Card data provided by [Magic: The Gathering - Developers](https://magicthegathering.io/).
+
+#### Usage
+`@Usalia mtg chandra, fire of kaladesh`
+
+#### Examples
+![Magic: The Gathering](https://i.imgur.com/SJekxiI.png)
