@@ -73,7 +73,7 @@ module UsaliaBot
       end
 
       def self.format_text(text)
-        text&.delete('{}')&.gsub('T:', 'Tap:')&.gsub("\n", "\n\n")
+        text&.gsub('{T}', 'Tap')&.delete('{}')&.gsub("\n", "\n\n")
       end
     end
   end
