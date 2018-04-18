@@ -194,3 +194,12 @@ Card data provided by [Magic: The Gathering - Developers](https://magicthegather
 
 #### Examples
 ![Magic: The Gathering](https://i.imgur.com/SJekxiI.png)
+
+### Skeleton
+Posts a random skeleton GIF by [jjjjjohn](https://giphy.com/jjjjjohn).
+
+#### Usage
+`@Usalia skeleton`
+
+#### Examples
+![Skeleton](https://i.imgur.com/GqrTM5g.png)

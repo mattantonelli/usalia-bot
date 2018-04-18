@@ -33,3 +33,6 @@ fflogs_api_key: 'ghi789'
 
 # YouTube API Key
 youtube_api_key: 'jkl012'
+
+# GIPHY API key
+giphy_api_key: 'mno345'
