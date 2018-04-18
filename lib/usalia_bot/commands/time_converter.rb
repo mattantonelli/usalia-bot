@@ -20,7 +20,7 @@ module UsaliaBot
         if match.nil?
           reply = message.reply("I can't understand your message, plip! " \
                                 'Try something like this: `convert 8pm EST to GMT`')
-          return delete_request(message, reply, 10)
+          return delete_request(message, reply)
         end
 
         time, zone, requested_zone = match.captures
@@ -39,10 +39,10 @@ module UsaliaBot
           result
         rescue ArgumentError
           reply = event.message.reply('The time you entered is invalid, plip! Try something like `8pm`, `8:00pm`, or `20:00`')
-          delete_request(event.message, reply, 10)
+          delete_request(event.message, reply)
         rescue TZInfo::InvalidTimezoneIdentifier
           reply = event.message.reply('One of your timezones is invalid, plip! Try something like `EST` or `GMT`')
-          delete_request(event.message, reply, 10)
+          delete_request(event.message, reply)
         end
       end
     end

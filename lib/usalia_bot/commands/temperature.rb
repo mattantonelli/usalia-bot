@@ -14,7 +14,7 @@ module UsaliaBot
         if match.nil?
           reply = message.reply("I can't understand your message, plip! " \
                                 'Try something like this: `temp 70F`')
-          return delete_request(message, reply, 10)
+          return delete_request(message, reply)
         end
 
         temp, unit = match.captures

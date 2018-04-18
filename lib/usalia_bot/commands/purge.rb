@@ -19,7 +19,7 @@ module UsaliaBot
           reply = event.message.reply('Please give me a number between 1 and 99, plip! (e.g. purge 10)')
         end
 
-        delete_request(event.message, reply, 10) if reply
+        delete_request(event.message, reply) if reply
       end
 
       # Purge all messages up to and including the given message ID (max 100)
@@ -34,7 +34,7 @@ module UsaliaBot
           reply = event.message.reply('Please give me a valid message ID, plip! (e.g. purge 0123456789)')
         end
 
-        delete_request(event.message, reply, 10) if reply
+        delete_request(event.message, reply) if reply
       end
     end
   end

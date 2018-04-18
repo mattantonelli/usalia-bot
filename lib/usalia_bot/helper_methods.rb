@@ -15,12 +15,12 @@ module UsaliaBot
       str.sub(/^./, &:upcase)
     end
 
-    def delete_request(message, reply, time = 20)
+    def delete_request(message, reply = nil, time = 10)
       return if message.channel.pm?
 
       sleep(time)
       safe_delete(message)
-      safe_delete(reply)
+      safe_delete(reply) unless reply.nil?
     end
 
     def emoji_regex

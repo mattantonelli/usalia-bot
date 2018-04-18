@@ -22,7 +22,7 @@ module UsaliaBot
           error = event.message.reply('Sorry. There was a problem retrieving the card data, plip!')
         end
 
-        delete_request(event.message, error, 10) if error
+        delete_request(event.message, error) if error
       end
 
       private
