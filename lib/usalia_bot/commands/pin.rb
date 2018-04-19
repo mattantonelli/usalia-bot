@@ -33,9 +33,9 @@ module UsaliaBot
             else
               reply = event.message.reply("That message isn't pinned, plip!")
             end
-
-            delete_request(event.message, reply)
           end
+
+          delete_request(event.message, reply)
         rescue RestClient::BadRequest, ArgumentError
           reply = event.message.reply("I couldn't find that message ID in this channel, plip!") unless message
           delete_request(event.message, reply)
