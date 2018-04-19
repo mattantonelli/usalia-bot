@@ -44,7 +44,8 @@ module UsaliaBot
         mentions = message_mentions(event.message, include_bot: true)
 
         name = "#{event.author.display_name}'s Party".sub("s's", "s'")
-        channel = server.create_channel(name, 2)
+        category = server.categories.sort_by(&:position).last
+        channel = server.create_channel(name, 2, parent: category)
         channels[user_id] = { server_id: server.id, channel_id: channel.id, created_at: Time.now }
 
         # If members are mentioned in the request, make the channel private using a role
