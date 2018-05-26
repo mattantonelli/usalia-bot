@@ -47,9 +47,6 @@ Creates a poll by adding reactions to the command message. The :thumbsup: and :t
 
 `@Usalia poll Would you rather go for :coffee: or :ice_cream: ?`
 
-#### Examples
-![Poll](https://i.imgur.com/WunCaSN.png)
-
 ### Convert
 #### Description
 Converts time from one zone to another. This command tries to be smart about DST, and will correct the given zones appropriately (e.g. EST when it is actually EDT.) This command currently supports the continental US, the UK, and southeastern Australia.
@@ -59,18 +56,12 @@ Converts time from one zone to another. This command tries to be smart about DST
 
 `@Usalia convert 14:00 PST to EST`
 
-#### Examples
-![Convert](http://i.imgur.com/BottAdX.png)
-
 ### Random
 #### Description
 Rolls a random number from 1 to 999.
 
 #### Usage
 `@Usalia random`
-
-#### Examples
-![Random](http://i.imgur.com/o84Vktm.png)
 
 ### Ready Check
 #### Description
@@ -81,16 +72,9 @@ Initiates a ready check for the mentioned users/roles. Users have 30 seconds to 
 
 `@Usalia ready @role1 @role2`
 
-#### Examples
-![Ready](http://i.imgur.com/BTmTHMv.png)
-
-
 ### Request
 #### Description
 A request is a call for help that can be issued by users with the **Mention Everyone** permission  when they react to a message with :bell: in any of the configured Request Channels. When Usalia sees the bell reaction added under these criteria, she will react to the message with the configured request reactions. A user with the **Mention Everyone** permission can also have the bot mention any users who reacted to the message by adding the :mega: reaction.
-
-#### Examples
-![Request](http://i.imgur.com/IfeRFVS.png)
 
 ### Introductions
 #### Description
@@ -99,9 +83,6 @@ Welcomes new members to the server in the configured Introductions channel.
 ### Auto Purge
 #### Description
 Members are automatically purged every Friday morning at 00:00 if they have been a member for over a week and they have no roles assigned. Usalia will also delete any recent posts she made in the Introductions channel that are older than a week.
-
-#### Examples
-![Introductions](http://i.imgur.com/kMmEn17.png)
 
 ### Party
 #### Description
@@ -113,9 +94,6 @@ To create a private channel, mention at least one other user. A temporary role w
 `@Usalia party`
 
 `@Usalia party @user1 @user2`
-
-#### Examples
-![Party](http://i.imgur.com/dLLEsuA.png)
 
 ### Disband
 #### Description
@@ -133,18 +111,12 @@ Card data provided by the [Yu-Gi-Oh Prices](https://yugiohprices.com/) [API](htt
 #### Usage
 `@Usalia yugioh blue-eyes white dragon`
 
-#### Examples
-![Yu-Gi-Oh!](http://i.imgur.com/2XxtPiW.png)
-
 ### Stream
 #### Description
 Broadcasts when a user starts streaming using the Twitch connection. Updates are sent to the configured Twitch channel after a user has enabled the feature for their account.
 
 #### Usage
 `@Usalia stream <on/off/status>`
-
-#### Examples
-![Stream](https://i.imgur.com/1skSg8J.png)
 
 ### Twitch
 #### Description
@@ -160,9 +132,6 @@ Posts FF Logs reports for users in their configured channels after they are uplo
 #### Usage
 `@Usalia fflogs <owner> <on/off/status>`
 
-#### Examples
-![FF Logs](https://i.imgur.com/1ZAWTP1.png)
-
 ### YouTube
 #### Description
 Posts the top YouTube search result for the given query.
@@ -170,18 +139,12 @@ Posts the top YouTube search result for the given query.
 #### Usage
 `@Usalia youtube <query>`
 
-#### Examples
-![YouTube](https://i.imgur.com/Wovya73.png)
-
 ### Temperature
 #### Description
 Converts between Celsius and Fahrenheit.
 
 #### Usage
 `@Usalia temp <value> <C/F>`
-
-#### Examples
-![Temperature](https://i.imgur.com/86VWJvB.png)
 
 ### Magic: The Gathering
 #### Description
@@ -192,14 +155,8 @@ Card data provided by [Magic: The Gathering - Developers](https://magicthegather
 #### Usage
 `@Usalia mtg chandra, fire of kaladesh`
 
-#### Examples
-![Magic: The Gathering](https://i.imgur.com/SJekxiI.png)
-
 ### Skeleton
 Posts a random skeleton GIF by [jjjjjohn](https://giphy.com/jjjjjohn).
 
 #### Usage
 `@Usalia skeleton`
-
-#### Examples
-![Skeleton](https://i.imgur.com/GqrTM5g.png)
