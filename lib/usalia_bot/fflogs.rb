@@ -10,12 +10,11 @@ module UsaliaBot
       reports = new_reports
       return if reports.empty?
 
-      server = bot.servers.values.first
       channels = Redis.hgetall('fflogs-channels')
 
       reports.each do |report|
         owner = report[:owner].downcase
-        channel = bot.channel(channels[owner], server)
+        channel = bot.channel(channels[owner])
         send_embed(owner, channel, report)
         Redis.hset('fflogs-reports', report[:id], '')
       end

@@ -21,7 +21,12 @@ request_reactions:
   - 'sprout:56789'
 
 # ID for introduction channel
-introduction_channel_id: 3456789012
+introduction_channel_ids:
+  - 3456789012
+
+# IDs for servers with the auto member purge enabled
+purge_server_ids:
+  - 2345678910
 
 # ID for Twitch channel
 twitch_channel_id: 4567890123
