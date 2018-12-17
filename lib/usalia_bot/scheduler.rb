@@ -1,6 +1,5 @@
 module UsaliaBot
   module Scheduler
-    MEMBER_PURGE_TIME = 604800.freeze # 1 week
     TEMP_CHANNEL_LIFESPAN = 3600.freeze # 1 hour
 
     def self.run(bot)
@@ -22,29 +21,6 @@ module UsaliaBot
           # If the channel was deleted manually, or its time has expired, disband the party
           if channel.nil? || (expiration_time < Time.now && channel.users.empty?)
             UsaliaBot::Commands::Party.disband_party(bot, user_id)
-          end
-        end
-      end
-
-      # Purge members who have not been assigned a role for configured servers,
-      # and delete any old introduction messages by the bot
-      scheduler.cron('0 0 * * *') do
-        CONFIG.purge_server_ids.each do |id|
-          server = bot.server(id)
-          server.members.compact.each do |member|
-            next unless join_time = member.joined_at
-
-            if member.roles.empty? && join_time + MEMBER_PURGE_TIME < Time.now
-              server.kick(member, 'No role')
-            end
-          end
-        end
-
-        CONFIG.introduction_channel_ids.each do |id|
-          bot.channel(id).history(100).each do |message|
-            if message.author.current_bot? && message.timestamp < Time.now - MEMBER_PURGE_TIME
-              message.delete
-            end
           end
         end
       end

@@ -8,7 +8,7 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 
 1. [Create a new Discord app](https://discordapp.com/developers/applications/me)
 2. Click "Create a Bot User"
-3. Insert your client ID into the following URL: `https://discordapp.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=268659794`
+3. Insert your client ID into the following URL: `https://discordapp.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=268659792`
 4. Follow the URL to add the bot to your server (requires the Manage Server permission)
 5. `git clone https://github.com/mattantonelli/usalia-bot`
 6. `cd usalia-bot`
@@ -24,7 +24,6 @@ Usalia requires the following permissions:
 
 * Manage Roles
 * Manage Channels
-* Kick Members
 * Read Text Channels & See Voice Channels
 * Send Messages
 * Manage Messages
@@ -79,10 +78,6 @@ A request is a call for help that can be issued by users with the **Mention Ever
 ### Introductions
 #### Description
 Welcomes new members to the server in the configured Introductions channel.
-
-### Auto Purge
-#### Description
-Members are automatically purged every Friday morning at 00:00 if they have been a member for over a week and they have no roles assigned. Usalia will also delete any recent posts she made in the Introductions channel that are older than a week.
 
 ### Party
 #### Description
