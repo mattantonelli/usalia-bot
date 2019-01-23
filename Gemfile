@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'discordrb', git: 'https://github.com/meew0/discordrb'
+gem 'nokogiri'
 gem 'redis-namespace'
 gem 'rest-client'
 gem 'rufus-scheduler'

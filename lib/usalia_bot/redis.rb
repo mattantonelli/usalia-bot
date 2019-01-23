@@ -20,6 +20,10 @@ module UsaliaBot
       REDIS.hkeys(key)
     end
 
+    def exists?(key)
+      REDIS.exists(key)
+    end
+
     def hexists?(key, field)
       REDIS.hexists(key, field)
     end

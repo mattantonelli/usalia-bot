@@ -155,3 +155,10 @@ Posts a random skeleton GIF by [jjjjjohn](https://giphy.com/jjjjjohn).
 
 #### Usage
 `@Usalia skeleton`
+
+### Maintenance
+#### Description
+Provides times for upcoming FFXIV maintenance.
+
+#### Usage
+`@Usalia maintenance`

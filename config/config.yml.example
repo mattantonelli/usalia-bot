@@ -41,3 +41,6 @@ youtube_api_key: 'jkl012'
 
 # GIPHY API key
 giphy_api_key: 'mno345'
+
+# Lodestone News webhook user ID
+lodestone_news_user_id: 5678901234
