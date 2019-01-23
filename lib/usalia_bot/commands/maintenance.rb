@@ -2,6 +2,8 @@ module UsaliaBot
   module Commands
     module Maintenance
       extend Discordrb::Commands::CommandContainer
+      extend UsaliaBot::HelperMethods
+
       TIME_FORMAT = '%a %-d %b %-I:%M %p'.freeze
       TIME_ZONES = [ { name: 'America/Los_Angeles', emoji: 'flag_us' }, { name: 'America/New_York', emoji: 'flag_us' },
                      { name: 'GMT', emoji: 'flag_gb' }, { name: 'Japan', emoji: 'flag_jp' },
@@ -9,7 +11,8 @@ module UsaliaBot
 
       command(:maintenance, description: 'Details on an upcoming FFXIV maintenance window.', usage: 'maintenance') do |event|
         unless Redis.exists?(:maintenance)
-          return 'There is currently no planned maintenance, plip!'
+          reply = event.message.reply('There is currently no planned maintenance, plip!')
+          return delete_request(event.message, reply)
         end
 
         start_time = Time.parse(Redis.hget(:maintenance, :start))
@@ -40,6 +43,9 @@ module UsaliaBot
                                                                 icon_url: 'http://na.lodestone.raelys.com/images/maintenance.png')
             embed.description = "#{times.join("\n")}\n\n#{relative_time}"
           end
+        else
+          reply = event.message.reply('There is currently no planned maintenance, plip!')
+          return delete_request(event.message, reply)
         end
       end
 

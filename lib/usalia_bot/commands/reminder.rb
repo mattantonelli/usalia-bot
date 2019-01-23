@@ -14,9 +14,11 @@ module UsaliaBot
 
       def self.set_reminder(event, time, message)
         if time.nil?
-          return 'You forgot to provide a time, plip!'
+          reply = event.message.reply('You forgot to provide a time, plip!')
+          return delete_request(event.message, reply)
         elsif message.empty?
-          return 'You forgot to provide a message, plip!'
+          reply = event.message.reply('You forgot to provide a message, plip!')
+          return delete_request(event.message, reply)
         end
 
         unit = time.scan(/\w$/).first
@@ -30,7 +32,8 @@ module UsaliaBot
         when 'd'
           duration *= 86400
         else
-          return 'Your time is invalid, plip! Try something like 5m or 3h.'
+          reply = event.message.reply('Your time is invalid, plip! Try something like 5m or 3h.')
+          return delete_request(event.message, reply)
         end
 
         reminder_time = (round_to_minute(Time.now) + duration).to_i
