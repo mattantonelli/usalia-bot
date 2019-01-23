@@ -57,6 +57,10 @@ module UsaliaBot
       message.channel.load_message(message.id)&.delete
     end
 
+    def round_to_minute(time)
+      Time.at(time - time.to_i % 60)
+    end
+
     private
     def role_mention_members(message, readable = false)
       members = message.role_mentions.flat_map(&:members)

@@ -1,5 +1,6 @@
 module UsaliaBot
   module Scheduler
+    extend UsaliaBot::HelperMethods
     TEMP_CHANNEL_LIFESPAN = 3600.freeze # 1 hour
 
     def self.run(bot)
@@ -33,6 +34,18 @@ module UsaliaBot
       # Poll Twitch for stream updates
       scheduler.cron('*/5 * * * *') do
         Twitch.poll(bot)
+      end
+
+      # Send reminders
+      scheduler.cron('* * * * *') do
+        current_time = round_to_minute(Time.now).to_i
+
+        if reminders = Redis.hget(:reminders, current_time)
+          JSON.parse(reminders, symbolize_names: true).each do |reminder|
+            bot.send_message(reminder[:channel], "#{reminder[:message]}" )
+          end
+          Redis.hdel(:reminders, current_time)
+        end
       end
     end
   end

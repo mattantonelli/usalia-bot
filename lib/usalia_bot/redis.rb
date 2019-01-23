@@ -43,5 +43,17 @@ module UsaliaBot
     def hdel(key, field)
       REDIS.hdel(key, field)
     end
+
+    def sadd(key, value)
+      REDIS.sadd(key, value)
+    end
+
+    def srem(key, value)
+      REDIS.srem(key, value)
+    end
+
+    def smembers(key)
+      REDIS.smembers(key)
+    end
   end
 end

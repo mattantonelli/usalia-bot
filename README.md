@@ -162,3 +162,11 @@ Provides times for upcoming FFXIV maintenance.
 
 #### Usage
 `@Usalia maintenance`
+
+### Reminder
+#### Description
+Provides a reminder message at the given time.
+
+#### Usage
+`@Usalia remindme 1d steal the declaration of independence`
+`@Usalia reminder @Usalia you're a good girl`
