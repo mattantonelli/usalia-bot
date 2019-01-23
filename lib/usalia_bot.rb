@@ -11,7 +11,7 @@ Bundler.require(:default)
 module UsaliaBot
   CONFIG = OpenStruct.new(YAML.load_file('config/config.yml'))
 
-  Dir['lib/usalia_bot/*.rb'].each { |file| load file }
+  Dir['lib/usalia_bot/*.rb'].sort.each { |file| load file }
 
   mention_prefix = ["<@#{CONFIG.client_id}>", "<@!#{CONFIG.client_id}>"]
   bot = Discordrb::Commands::CommandBot.new(token: CONFIG.token, client_id: CONFIG.client_id,
