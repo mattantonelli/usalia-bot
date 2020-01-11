@@ -16,8 +16,8 @@ module UsaliaBot
 
         # Pin the message, announce it, and remove the original :bell: reaction
         message.pin
-        message.reply("@everyone A new request has been created for #{event.message.author.mention}, plip! If you would like " \
-                      'to help, please indicate your available roles and experience on the pinned message above.')
+        message.reply("@everyone A new event has been created for #{event.message.author.mention}, plip! If you would like " \
+                      'to participate, please indicate your available roles and experience on the pinned message above.')
         message.delete_reaction(event.user, '🔔')
       end
 
