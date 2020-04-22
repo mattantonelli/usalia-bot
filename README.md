@@ -15,7 +15,8 @@ Usalia is currently a private bot. You will need to create and run your own Disc
 7. `bundle install`
 8. Set up the configuration file
     * `cp config/config.yml.example config/config.yml`
-    * Updated the example values appropriately
+    * Features that poll external services are disabled by default. Uncomment those if you wish to use them.
+    * Update the example values appropriately.
 9. `bundle exec ruby run.rb`
 
 ## Permissions

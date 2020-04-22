@@ -27,13 +27,17 @@ module UsaliaBot
       end
 
       # Poll FF Logs for new reports
-      scheduler.cron('*/5 * * * *') do
-        FFLogs.poll(bot)
+      if CONFIG.fflogs_guild
+        scheduler.cron('*/5 * * * *') do
+          FFLogs.poll(bot)
+        end
       end
 
       # Poll Twitch for stream updates
-      scheduler.cron('*/5 * * * *') do
-        Twitch.poll(bot)
+      if CONFIG.twitch_channel_id
+        scheduler.cron('*/5 * * * *') do
+          Twitch.poll(bot)
+        end
       end
 
       # Send reminders
