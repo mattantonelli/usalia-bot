@@ -50,3 +50,9 @@ lodestone_news_user_id: 5678901234
 ## FFLogs
 # fflogs_guild: 'MyGuild/Behemoth/NA'
 # fflogs_api_key: 'ghi789'
+
+## FFXIV world status reporting
+# ffxiv_world_status:
+# north_america: 1234567890
+# europe: 2345678901
+# japan: 3456789012

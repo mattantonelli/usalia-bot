@@ -40,6 +40,15 @@ module UsaliaBot
         end
       end
 
+      # Prime the FFXIV world status cache and then poll for updates
+      if CONFIG.ffxiv_world_status
+        FFXIVWorldStatus.fetch(bot, false)
+
+        scheduler.cron('*/1 * * * *') do
+          FFXIVWorldStatus.fetch(bot)
+        end
+      end
+
       # Send reminders
       scheduler.cron('* * * * *') do
         current_time = round_to_minute(Time.now).to_i
