@@ -10,12 +10,14 @@ module UsaliaBot
           response = Nokogiri::HTML(open(embed.url))
           text = response.at_css('.news__detail__wrapper').text.scan(/\[Date & Time\]\n.*?\n/).first
           time_zone = text.match(/\((\w+)\)/)[1]
-          start_time, end_time = text.scan(/[a-z]{3}\. \d{1,2}, \d{4} \d{1,2}:\d{2} [ap]\.m\./i)
+          start_time, end_time = text.scan(/\w{3}\.? \d{1,2} \d{1,2}:\d{2} [AP]M/).last(2)
             .map { |time| Time.parse("#{time} #{time_zone}").utc }
 
-          Redis.hset(:maintenance, :start, start_time)
-          Redis.hset(:maintenance, :end, end_time)
-          Redis.hset(:maintenance, :url, embed.url)
+          if !start_time.empty? && !end_time.empty?
+            Redis.hset(:maintenance, :start, start_time)
+            Redis.hset(:maintenance, :end, end_time)
+            Redis.hset(:maintenance, :url, embed.url)
+          end
         end
       end
     end
