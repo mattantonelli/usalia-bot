@@ -1,12 +1,17 @@
 # Usalia Bot
 
-Usalia is a Discord bot intended to provide useful functionality to your Discord server. Powered by [discordrb](https://github.com/meew0/discordrb).
+Usalia is a Discord bot intended to provide useful functionality to your Discord server. Powered by [discordrb](https://github.com/shardlab/discordrb).
+
+## Requirements
+
+Ruby >= 2.7.2
+Redis
 
 ## Installation
 
 Usalia is currently a private bot. You will need to create and run your own Discord app to add her to your server.
 
-1. [Create a new Discord app](https://discordapp.com/developers/applications/me)
+1. [Create a new Discord app](https://discord.com/developers/applications)
 2. Click "Create a Bot User"
 3. Insert your client ID into the following URL: `https://discordapp.com/oauth2/authorize?client_id=INSERT_CLIENT_ID_HERE&scope=bot&permissions=268659792`
 4. Follow the URL to add the bot to your server (requires the Manage Server permission)

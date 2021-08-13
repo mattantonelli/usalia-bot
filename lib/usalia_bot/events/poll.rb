@@ -8,7 +8,7 @@ module UsaliaBot
       message_edit(start_with: /#{bot_mention} poll/i) do |event|
         message = event.channel.message(event.message.id)
         emojis = message.content.scan(emoji_regex).flatten.compact
-        bot_reactions = message.reactions.values.select(&:me)
+        bot_reactions = message.reactions.select(&:me)
           .map { |reaction| [reaction.name, reaction.id].compact.join(':') }
 
         # Add reactions that are in the message and not in the reactions

@@ -29,7 +29,7 @@ module UsaliaBot
 
         # Mention users who have reacted to the message, excluding the user who
         # added the :mega: reaction, and then remove the :mega: reaction
-        reactions = message.reactions.reject { |k, v| k == '📣' }.values.map(&:to_s)
+        reactions = message.reactions.reject { |reaction| reaction == '📣' }.map(&:to_s)
         mentions = reactions.flat_map { |reaction| message.reacted_with(reaction) }
           .reject(&:current_bot?).map(&:mention).uniq
 

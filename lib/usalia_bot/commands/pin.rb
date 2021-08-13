@@ -36,7 +36,7 @@ module UsaliaBot
           end
 
           delete_request(event.message, reply)
-        rescue RestClient::BadRequest, ArgumentError
+        rescue
           reply = event.message.reply("I couldn't find that message ID in this channel, plip!") unless message
           delete_request(event.message, reply)
         end

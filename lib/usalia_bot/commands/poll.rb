@@ -1,6 +1,6 @@
 module UsaliaBot
   module Commands
-    module FFLogs
+    module Poll
       extend Discordrb::Commands::CommandContainer
       extend UsaliaBot::HelperMethods
 

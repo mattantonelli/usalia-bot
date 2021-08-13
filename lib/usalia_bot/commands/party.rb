@@ -59,7 +59,7 @@ module UsaliaBot
       end
 
       def self.create_role(server, channel, members)
-        role = server.create_role(name: channel.name, packed_permissions: 0)
+        role = server.create_role(name: channel.name, permissions: 0)
         role.name = channel.name
 
         members.each { |member| member.add_role(role)}

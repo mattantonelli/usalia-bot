@@ -21,11 +21,11 @@ module UsaliaBot
     end
 
     def exists?(key)
-      REDIS.exists(key)
+      REDIS.exists?(key)
     end
 
     def hexists?(key, field)
-      REDIS.hexists(key, field)
+      REDIS.hexists?(key, field)
     end
 
     def get_json(key)

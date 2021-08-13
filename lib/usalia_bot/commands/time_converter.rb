@@ -28,7 +28,7 @@ module UsaliaBot
         begin
           zone_identifier = ZONE_CONVERSIONS[zone.downcase.to_sym] || zone.upcase
           time_in_utc = TZInfo::Timezone.get(zone_identifier)
-            .local_to_utc(Time.parse(time).to_i)
+            .local_to_utc(Time.parse(time))
 
           requested_zone_identifier = ZONE_CONVERSIONS[requested_zone.downcase.to_sym] || requested_zone.upcase
           requested_zone_info = TZInfo::Timezone.get(requested_zone_identifier)
