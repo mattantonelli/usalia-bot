@@ -17,7 +17,7 @@ GEM
   specs:
     airbrussh (1.4.0)
       sshkit (>= 1.6.1, != 1.7.0)
-    capistrano (3.16.0)
+    capistrano (3.10.2)
       airbrussh (>= 1.0.0)
       i18n
       rake (>= 10.0.0)
@@ -85,7 +85,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  capistrano (~> 3.8)
+  capistrano (= 3.10.2)
   capistrano-bundler (~> 1.2)
   capistrano-rbenv (~> 2.1)
   discordrb!
@@ -94,6 +94,9 @@ DEPENDENCIES
   rest-client
   rufus-scheduler
   tzinfo
+
+RUBY VERSION
+   ruby 2.7.2p137
 
 BUNDLED WITH
    2.1.4

@@ -9,7 +9,7 @@ set :default_env, { path: '$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH' }
 
 # rbenv
 set :rbenv_type, :user
-set :rbenv_ruby, '2.4.1'
+set :rbenv_ruby, '2.7.2'
 
 namespace :deploy do
   desc 'Symlink configuration'
@@ -32,7 +32,7 @@ namespace :deploy do
     on roles(:app) do
       within release_path do
         info 'Starting the bot'
-        execute *%w(screen -d -S usalia -m bundle exec ruby run.rb)
+        execute(*%w(screen -d -S usalia -m bundle exec ruby run.rb))
       end
     end
   end
