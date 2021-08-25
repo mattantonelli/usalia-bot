@@ -14,36 +14,36 @@ module UsaliaBot
         begin
           maintenance = JSON.parse(RestClient.get(MAINTENANCE_URL))['game']
 
-          if maintenance['title']&.match?('All Worlds Maintenance')
-            start_time = Time.parse(maintenance['start'])
-            end_time = Time.parse(maintenance['end'])
+          if maintenance.nil? || !maintenance['title'].match?('All Worlds Maintenance')
+            return event.message.reply('There is currently no planned maintenance, plip!')
+          end
 
-            if Time.now > start_time
-              difference = end_time - Time.now
-              relative_time = "Maintenance is currently underway.\nIt is expected to last for another " \
-                "#{(difference / 3600).to_i} hours and #{(difference % 3600 / 60).to_i} minutes."
-            else
-              to_start = start_time - Time.now
-              duration = end_time - start_time
-              relative_time = "Maintenance begins in " \
-                "#{(to_start / 3600).to_i} hours and #{(to_start % 3600 / 60).to_i} minutes.\n" \
-                "It is expected to last for #{(duration / 3600).to_i} hours and #{(duration % 3600 / 60).to_i} minutes."
-            end
+          start_time = Time.parse(maintenance['start'])
+          end_time = Time.parse(maintenance['end'])
 
-            times = TIME_ZONES.map do |zone|
-              format_maintenance_time(start_time, end_time, zone[:name], zone[:emoji])
-            end
-
-            event.channel.send_embed do |embed|
-              embed.title = 'View on Lodestone'
-              embed.url = maintenance['url']
-              embed.color = 13413161
-              embed.author = Discordrb::Webhooks::EmbedAuthor
-                .new(name: 'All Worlds Maintenance', icon_url: 'http://na.lodestone.raelys.com/images/maintenance.png')
-              embed.description = "#{times.join("\n")}\n\n#{relative_time}"
-            end
+          if Time.now > start_time
+            difference = end_time - Time.now
+            relative_time = "Maintenance is currently underway.\nIt is expected to last for another " \
+              "#{(difference / 3600).to_i} hours and #{(difference % 3600 / 60).to_i} minutes."
           else
-            event.message.reply('There is currently no planned maintenance, plip!')
+            to_start = start_time - Time.now
+            duration = end_time - start_time
+            relative_time = "Maintenance begins in " \
+              "#{(to_start / 3600).to_i} hours and #{(to_start % 3600 / 60).to_i} minutes.\n" \
+              "It is expected to last for #{(duration / 3600).to_i} hours and #{(duration % 3600 / 60).to_i} minutes."
+          end
+
+          times = TIME_ZONES.map do |zone|
+            format_maintenance_time(start_time, end_time, zone[:name], zone[:emoji])
+          end
+
+          event.channel.send_embed do |embed|
+            embed.title = 'View on Lodestone'
+            embed.url = maintenance['url']
+            embed.color = 13413161
+            embed.author = Discordrb::Webhooks::EmbedAuthor
+              .new(name: 'All Worlds Maintenance', icon_url: 'http://na.lodestone.raelys.com/images/maintenance.png')
+            embed.description = "#{times.join("\n")}\n\n#{relative_time}"
           end
         rescue
           event.message.reply('Sorry. There was a problem retrieving the maintenance info, plip!')
