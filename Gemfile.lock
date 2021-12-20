@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/shardlab/discordrb
-  revision: 5dfc98680d0e7fbe87f38bcb6e1ea45d5887ad6c
+  revision: d238f6f4d1ad3f231f8a2ff0ca899884e9a78ff2
   branch: main
   specs:
     discordrb (3.4.2)
@@ -33,7 +33,7 @@ GEM
     et-orbi (1.2.4)
       tzinfo
     event_emitter (0.2.6)
-    ffi (1.15.3)
+    ffi (1.15.4)
     fugit (1.5.0)
       et-orbi (~> 1.1, >= 1.1.8)
       raabro (~> 1.4)
