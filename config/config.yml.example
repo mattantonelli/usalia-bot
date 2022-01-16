@@ -50,6 +50,7 @@ lodestone_news_user_id: 5678901234
 ## FFLogs
 # fflogs_guild: 'MyGuild/Behemoth/NA'
 # fflogs_api_key: 'ghi789'
+# fflogs_channel_id: '5678901234'
 
 ## FFXIV world status reporting
 # ffxiv_world_status:
